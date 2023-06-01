@@ -76,12 +76,13 @@ export default class Game {
     fillWordsPair() {
         const wordIndex = math.randomInt(this.words.length - 1);
         const id = this.words[wordIndex].id;
-        const [en, ...ru] = this.words.splice(wordIndex, 1)[0].value;
-        this.setupWordButton(id, [en], this.enWordButtons, this.ruWordButtons, enWordsUL);
+        const wordsPair = this.words.splice(wordIndex, 1)[0].value;
+        const [en, ru] = [wordsPair[0], wordsPair[wordsPair.length - 1]];
+        this.setupWordButton(id, en, this.enWordButtons, this.ruWordButtons, enWordsUL);
         this.setupWordButton(id, ru, this.ruWordButtons, this.enWordButtons, ruWordsUL);
     }
-    setupWordButton(index, content, currentLangButtons, otherLangButtons, currentLangUL) {
-        const button = new WordButton(index, ...content);
+    setupWordButton(index, text, currentLangButtons, otherLangButtons, currentLangUL) {
+        const button = new WordButton(index, text);
         const filledIndex = currentLangButtons.fillRandomVacant(button);
         currentLangUL.children[filledIndex].appendChild(button.node);
         button.node.addEventListener('click', () => {

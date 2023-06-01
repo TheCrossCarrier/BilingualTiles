@@ -2,14 +2,13 @@ export default class WordButton {
   node: HTMLButtonElement;
   #pressed: boolean = false;
 
-  constructor(public id: number, ...content: (string | Node)[]) {
+  constructor(public id: number, text: string) {
     this.node = document.createElement('button');
     this.node.classList.add('words__button');
     this.node.setAttribute('type', 'button');
+    this.node.textContent = text;
 
     this.pressed = false;
-
-    content.forEach((element) => this.appendContent(element));
   }
 
   get pressed() {
@@ -19,16 +18,6 @@ export default class WordButton {
   set pressed(value: boolean) {
     this.#pressed = value;
     this.node.setAttribute('aria-pressed', value ? 'true' : 'false');
-  }
-
-  appendContent(element: string | Node) {
-    if (typeof element === 'string') {
-      const span = document.createElement('span');
-      span.textContent = element;
-      this.node.appendChild(span);
-    } else {
-      this.node.appendChild(element);
-    }
   }
 
   // appear() {

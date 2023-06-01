@@ -11,14 +11,14 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
 };
 var _WordButton_pressed;
 export default class WordButton {
-    constructor(id, ...content) {
+    constructor(id, text) {
         this.id = id;
         _WordButton_pressed.set(this, false);
         this.node = document.createElement('button');
         this.node.classList.add('words__button');
         this.node.setAttribute('type', 'button');
+        this.node.textContent = text;
         this.pressed = false;
-        content.forEach((element) => this.appendContent(element));
     }
     get pressed() {
         return __classPrivateFieldGet(this, _WordButton_pressed, "f");
@@ -26,16 +26,6 @@ export default class WordButton {
     set pressed(value) {
         __classPrivateFieldSet(this, _WordButton_pressed, value, "f");
         this.node.setAttribute('aria-pressed', value ? 'true' : 'false');
-    }
-    appendContent(element) {
-        if (typeof element === 'string') {
-            const span = document.createElement('span');
-            span.textContent = element;
-            this.node.appendChild(span);
-        }
-        else {
-            this.node.appendChild(element);
-        }
     }
     remove(type) {
         this.node.classList.add('removing');

@@ -120,20 +120,21 @@ export default class Game {
   fillWordsPair() {
     const wordIndex = math.randomInt(this.words!.length - 1);
     const id = this.words![wordIndex].id;
-    const [en, ...ru] = this.words!.splice(wordIndex, 1)[0].value;
+    const wordsPair = this.words!.splice(wordIndex, 1)[0].value;
+    const [en, ru] = [wordsPair[0], wordsPair[wordsPair.length - 1]];
 
-    this.setupWordButton(id, [en], this.enWordButtons!, this.ruWordButtons!, enWordsUL);
+    this.setupWordButton(id, en, this.enWordButtons!, this.ruWordButtons!, enWordsUL);
     this.setupWordButton(id, ru, this.ruWordButtons!, this.enWordButtons!, ruWordsUL);
   }
 
   setupWordButton(
     index: number,
-    content: string[],
+    text: string,
     currentLangButtons: SparseStaticArray<WordButton>,
     otherLangButtons: SparseStaticArray<WordButton>,
     currentLangUL: HTMLUListElement,
   ) {
-    const button = new WordButton(index, ...content);
+    const button = new WordButton(index, text);
     const filledIndex = currentLangButtons.fillRandomVacant(button);
 
     currentLangUL.children[filledIndex].appendChild(button.node);
