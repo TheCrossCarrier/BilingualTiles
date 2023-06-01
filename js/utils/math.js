@@ -5,4 +5,3 @@ export function randomInt(max, min = 0) {
     return Math.floor(result);
 }
 export default { randomInt };
-//# sourceMappingURL=math.js.map

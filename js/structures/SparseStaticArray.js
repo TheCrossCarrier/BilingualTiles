@@ -28,4 +28,3 @@ export default class SparseStaticArray extends StaticArray {
         return vacantIndexes[index];
     }
 }
-//# sourceMappingURL=SparseStaticArray.js.map

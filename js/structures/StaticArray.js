@@ -22,4 +22,3 @@ export default class StaticArray extends Array {
         throw Error(lengthErrorText);
     }
 }
-//# sourceMappingURL=StaticArray.js.map

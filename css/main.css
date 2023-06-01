@@ -34,6 +34,18 @@ body::before {
   display: grid;
 }
 
+@keyframes heartbeat {
+  80% {
+    transform: scale(1);
+  }
+  90% {
+    transform: scale(0.95);
+  }
+  95% {
+    transform: scale(1.1);
+  }
+}
+
 .lives {
   padding: 0;
   display: none; /* flex */
@@ -46,6 +58,10 @@ body::before {
   height: min(56px, 10vw);
   background: center / contain no-repeat url('../images/heart.png');
   transition: transform 500ms, opacity 500ms;
+}
+
+.lives__item.heartbeat {
+  animation: 2s forwards heartbeat;
 }
 
 .lives__item.losing {

@@ -43,10 +43,9 @@ export default class WordButton {
         return new Promise((resolve) => {
             this.node.addEventListener('transitionend', () => {
                 this.node.remove();
-                resolve(null);
+                resolve(true);
             });
         });
     }
 }
 _WordButton_pressed = new WeakMap();
-//# sourceMappingURL=WordButton.js.map

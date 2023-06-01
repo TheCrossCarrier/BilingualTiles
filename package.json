@@ -4,7 +4,8 @@
   "description": "",
   "private": "true",
   "scripts": {
-    "watch": "tsc --watch --sourceMap"
+    "watch": "tsc --watch --sourceMap",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",

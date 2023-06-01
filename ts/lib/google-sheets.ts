@@ -12,12 +12,10 @@ interface GSResponse {
   values: string[][];
 }
 
-export async function getData() {
-  const response: GSResponse = await fetch(url.href).then((response) => {
-    return response.json();
-  });
-
-  return response.values;
+export function getData() {
+  return fetch(url.href)
+    .then((response) => response.json())
+    .then((data: GSResponse) => data.values);
 }
 
 export default { getData };

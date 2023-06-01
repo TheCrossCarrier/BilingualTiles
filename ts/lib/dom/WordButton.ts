@@ -44,10 +44,10 @@ export default class WordButton {
     this.node.classList.add('removing');
     this.node.classList.add('removing_' + type);
 
-    return new Promise((resolve) => {
+    return new Promise<boolean>((resolve) => {
       this.node.addEventListener('transitionend', () => {
         this.node.remove();
-        resolve(null);
+        resolve(true);
       });
     });
   }
