@@ -1,0 +1,15 @@
+{
+  "name": "bilingualtiles",
+  "version": "1.0.0",
+  "description": "",
+  "private": "true",
+  "scripts": {
+    "watch": "tsc --watch --sourceMap"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  }
+}

@@ -1,0 +1,147 @@
+:root {
+  --c-red: #b8405e;
+  --c-green: #2eb086;
+  --c-secondary: #313552;
+  --c-primary: #eee6ce;
+  --c-primary-darken: #e3c770;
+
+  color-scheme: dark;
+}
+
+body {
+  overflow-x: hidden;
+  background: var(--c-secondary);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--c-green);
+}
+
+.container {
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.header {
+  display: grid;
+}
+
+.lives {
+  padding: 0;
+  display: none; /* flex */
+  gap: min(15px, 2vw);
+  list-style: none;
+}
+
+.lives__item {
+  width: min(56px, 10vw);
+  height: min(56px, 10vw);
+  background: center / contain no-repeat url('../images/heart.png');
+  transition: transform 500ms, opacity 500ms;
+}
+
+.lives__item.losing {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.score {
+  margin-left: auto;
+  padding-top: 12px;
+  padding-right: 15px;
+  display: none;
+  font-size: min(64px, 9vw);
+  font-weight: bold;
+  line-height: 1;
+}
+
+.logo {
+  grid-column: span 2;
+  font-size: min(3.375rem, 10vw);
+  text-align: center;
+}
+
+.main {
+  display: flex;
+  gap: min(5rem, 5vw);
+  justify-content: space-between;
+}
+
+.words {
+  display: grid;
+  grid-auto-columns: min(22.9rem, 45vw);
+  grid-auto-rows: min(6.25rem, 20vw);
+  gap: min(1rem, 1vw);
+  list-style: none;
+  padding: 0;
+}
+
+/* .appearing {
+  transform: scale(0);
+  opacity: 0;
+}
+
+.appearing.appeared {
+  transform: scale(1);
+  opacity: 1;
+} */
+
+.words__button {
+  padding: 1em 2em;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  place-content: center;
+  gap: 5px;
+  background: var(--c-primary);
+  border: 1px solid black;
+  border-radius: 0.7em;
+  font-size: min(1.25rem, 3vw);
+  font-weight: bold;
+  color: var(--c-secondary);
+  cursor: pointer;
+  /* animation: 300ms forwards button-appear; */
+  transition: transform 300ms, opacity 300ms, background-color 300ms;
+}
+
+@media (hover: hover) {
+  .words__button:hover {
+    background: var(--c-primary-darken);
+  }
+}
+
+.words__button[aria-pressed='true'] {
+  background: var(--c-green);
+  color: var(--c-primary);
+}
+
+.words__button.removing {
+  opacity: 0;
+}
+
+.words__button.removing_success {
+  background-color: var(--c-green);
+}
+
+.words__button.removing_mistake {
+  background-color: var(--c-red);
+}
+
+.words_en .words__button.removing_success,
+.words_ru .words__button.removing_mistake {
+  transform: translateX(100%);
+}
+
+.words_en .words__button.removing_mistake,
+.words_ru .words__button.removing_success {
+  transform: translateX(-100%);
+}
